@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../lib');
+const { NotImplementedError } = require("../lib");
 
 /**
  * Given a number, replace this number with
@@ -12,11 +12,24 @@ const { NotImplementedError } = require('../lib');
  * For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
  *
  */
-function getSumOfDigits(/* n */) {
-  // Remove line below and write your code here
-  throw new NotImplementedError('Not implemented');
+function getSumOfDigits(n) {
+  let sum = 0;
+  let digit = n;
+
+  while (digit >= 10) {
+    sum += digit % 10;
+    digit = Math.trunc(digit / 10);
+  }
+
+  sum += digit;
+
+  if (sum >= 10) {
+    return getSumOfDigits(sum);
+  } else {
+    return sum;
+  }
 }
 
 module.exports = {
-  getSumOfDigits
+  getSumOfDigits,
 };
